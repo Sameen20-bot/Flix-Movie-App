@@ -260,29 +260,27 @@ async function displaySlider() {
   });
 }
 
-function initSwiper() {
-  const Swiper = new Swiper('.swiper', {
-    slidesPerView: 5,
-    spaceBetween: 30,
-    freeMode: true,
-    loop: true,
-    autoplay: {
-      delay: 4000,
-      disableOnInteraction: false,
+const Swiper = new Swiper('.swiper', {
+  slidesPerView: 5, 
+  spaceBetween: 30, 
+  freeMode: true,
+  loop: true,
+  autoplay: {
+    delay: 4000,
+    disableOnInteraction: false,
+  },
+  breakpoints: {
+    500: {
+      slidesPerView: 2,
     },
-    breakpoints: {
-      500: {
-        slidesPerView: 2,
-      },
-      700: {
-        slidesPerView: 3,
-      },
-      1200: {
-        slidesPerView: 4,
-      },
+    700: {
+      slidesPerView: 3,
     },
-  });
-}
+    1200: {
+      slidesPerView: 4,
+    },
+  },
+});
 
 // Fetch data from TMDB API
 async function fetchAPIData(endpoint) {
