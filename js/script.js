@@ -177,7 +177,7 @@ async function displayMovieDetails() {
           </ul>
           <h4>Production Companies</h4>
           <div class="list-group">${movie.production_companies
-            .map((company) => `<span>${comapny.name}</span>`)
+            .map((company) => `<span>${company.name}</span>`)
             .join(", ")} </div>
         </div>
   `;
@@ -260,29 +260,27 @@ async function displayShowDetails() {
 
 //Display Slider
 async function displaySlider() {
-  const {result} = await fetchAPIData('movie/now_playing');
-
-  results.forEach((movie)=>{
-    const div = document.createElement('div');
-    div.classList.add('swiper-slide');
-
+  const { results } = await fetchAPIData("movie/now_playing");
+  results.forEach((movie) => {
+    const div = document.createElement("div");
+    div.classList.add("swiper-slide");
     div.innerHTML = `
-        <a href="movie-details.html?id=${movie.id}">
-              <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" />
-            </a>
-            <h4 class="swiper-rating">
-              <i class="fas fa-star text-secondary"></i> ${movie.vote_average} / 10
-            </h4>
+      <a href="movie-details.html?id=${movie.id}">
+        <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}" />
+      </a>
+      <h4 class="swiper-rating">
+        <i class="fas fa-star text-secondary"></i> ${movie.vote_average} / 10
+      </h4>
     `;
-    document.querySelector('.swiper-wrapper').appendChild(div);
-
-    initSwiper();
-  })
+    document.querySelector(".swiper-wrapper").appendChild(div);
+  });
+  initSwiper(); 
 }
 
 
+
 function initSwiper() {
-  const swiper = new Swiper('.swiper', {
+  const Swiper = new Swiper('.swiper', {
     slidesPerView: 1,
     spaceBetween: 30,
     freeMode: true,
